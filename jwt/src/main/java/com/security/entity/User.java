@@ -1,5 +1,6 @@
 package com.security.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +33,12 @@ public class User implements UserDetails{
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public User(String email, String password, Set<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
     public Integer getId() {

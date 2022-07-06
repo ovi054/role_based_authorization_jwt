@@ -31,8 +31,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         //http.authorizeRequests().anyRequest().permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/auth/login").permitAll().anyRequest().authenticated();
-
+        //http.authorizeRequests().antMatchers("/auth/login").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/auth/**").permitAll().anyRequest().authenticated();
 
         //ensures that the server will return HTTP status 401 (Unauthorized) if any error occurs during authentication process
         http.exceptionHandling()
