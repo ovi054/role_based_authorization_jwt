@@ -13,6 +13,9 @@ public class AuthRequest {
     //@NotNull
     private String password;
 
+    public AuthRequest() {
+    }
+
     public String getEmail() {
         return email;
     }

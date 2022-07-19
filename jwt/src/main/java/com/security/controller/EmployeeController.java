@@ -3,13 +3,16 @@ package com.security.controller;
 import com.security.entity.Employee;
 import com.security.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1")
 public class EmployeeController {
     @Autowired
@@ -23,6 +26,7 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     @RolesAllowed({"ROLE_ADMIN","ROLE_EDITOR","ROLE_VIEWER"})
+    @ResponseBody
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }

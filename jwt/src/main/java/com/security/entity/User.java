@@ -14,9 +14,9 @@ public class User implements UserDetails{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = true, length = 50, unique = true)
     private String email;
-    @Column(nullable = false, length = 64)
+    @Column(nullable = true, length = 64)
     private String password;
 
     @ManyToMany
