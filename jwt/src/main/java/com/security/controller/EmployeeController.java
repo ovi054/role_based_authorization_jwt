@@ -12,8 +12,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("/api/v1")
+
+@RestController
+@RequestMapping()
+//@CrossOrigin(origins = "*", allowedHeaders = "true")
+//@CrossOrigin("*")
+//@CrossOrigin(origins = "null",allowCredentials = "true")
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -24,13 +28,15 @@ public class EmployeeController {
         return "Welcome Home";
     }
 
+    //@CrossOrigin("*")
+    //@CrossOrigin(origins = "*", allowedHeaders = "true")
+    //@CrossOrigin("*")
     @GetMapping("/employees")
     @RolesAllowed({"ROLE_ADMIN","ROLE_EDITOR","ROLE_VIEWER"})
-    @ResponseBody
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
-
+    //@CrossOrigin("*")
     @GetMapping("/employees/{id}")
     @RolesAllowed({"ROLE_ADMIN","ROLE_EDITOR","ROLE_VIEWER"})
     public Optional<Employee> getEmployeeById(@PathVariable String id)

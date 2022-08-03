@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 public class JwtApplication implements CommandLineRunner {
@@ -19,7 +23,7 @@ public class JwtApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Employee employee = new Employee(1,"aVI","paL","AVI@GMAIL.COM");
-		employeeRepository.save(employee);
+		//Employee employee = new Employee(1,"aVI","paL","AVI@GMAIL.COM");
+		//employeeRepository.save(employee);
 	}
 }

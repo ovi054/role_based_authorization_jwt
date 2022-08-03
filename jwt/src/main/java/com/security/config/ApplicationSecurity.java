@@ -3,6 +3,7 @@ package com.security.config;
 import com.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -29,10 +30,11 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        //http.cors().disable();
         //http.authorizeRequests().anyRequest().permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         //http.authorizeRequests().antMatchers("/auth/login").permitAll().anyRequest().authenticated();
-        http.authorizeRequests().antMatchers("/auth/**").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/auth/**","/employees","/employees/**").permitAll().anyRequest().authenticated();
 
         //ensures that the server will return HTTP status 401 (Unauthorized) if any error occurs during authentication process
         http.exceptionHandling()
